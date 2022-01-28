@@ -1,31 +1,3 @@
-/*
-1. Criar uma classe 'Calculadora' que possua os seguintes atributos e métodos:
-
-a. Atributos:
-
-i. operand1;
-
-ii. operand2;
-
-iii. operation.
-
-b. Métodos:
-
-i. setOperand1(_operand1): responsável por definir o primeiro operando;
-
-ii. setOperand2(_operand2): responsável por definir o segundo operando;
-
-iii. setOperation(_operation): responsável por definir o tipo de operação
-('soma', 'subtracao', 'divisao', 'multiplicacao');
-
-iv. getResult(): retorna o resultado da operação se possível ou erro caso
-contrário (informar o erro da operação);
-
-v. clearCalculator(): retorna os valores padrão para 'operand1', 'operand2',
-'operation'
-
-*/
-
 class Calculator {
     #operand1;
     #operand2;
