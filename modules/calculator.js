@@ -1,95 +1,101 @@
-class Calculator {
-    #operand1;
-    #operand2;
-    #operation;
+function Calculator() {
+    let operand1;
+    let operand2;
+    let chosenOperation;
 
-    set setOperand1 (value){
-        const textValue = String(value);
-        const valueA = Number(textValue.replace(/,/g, '.')); //regex for replacing all , with .
-        if(isNaN(valueA) || value === ''){
-            console.log('invalid value in operand1')
-            return ('error')
-        }else{
-            this.#operand1 = valueA;
-            return(this.#operand1);
-        }
-    }
+    const clearCalculator = ()=>{
+        operand2 = undefined;
+        operand1 = undefined;
+        chosenOperation = undefined;
+    };
 
-    set setOperand2 (value){
-        const textValue = String(value);
-        const valueB = Number(textValue.replace(/,/g, '.')); //regex for replacing all , with .
-        if(isNaN(valueB) || value === ''){
-            console.log('invalid value in operand2')
-            return ('error')
-        }else{
-            this.#operand2 = valueB;
-            return(this.#operand2);
-        }
-    }
+    return({
+        setOperand1: (value)=>{
+            const textValue = String(value);
+            const valueA = Number(textValue.replace(/,/g, '.')); //regex for replacing all , with .
+            if(isNaN(valueA) || value === ''){
+                console.log('invalid value in operand1')
+                return ('error')
+            }else{
+                operand1 = valueA;
+                return(operand1);
+            }
+        },
 
-    set setOperation (operation){
+        setOperand2: (value)=>{
+            const textValue = String(value);
+            const valueB = Number(textValue.replace(/,/g, '.')); //regex for replacing all , with .
+            if(isNaN(valueB) || value === ''){
+                console.log('invalid value in operand2')
+                return ('error')
+            }else{
+                operand2 = valueB;
+                return(operand2);
+            }
+        },
 
-        switch (operation){
-            case '+':
-            this.#operation = '+';
-            break;
-        case '-':
-            this.#operation = '-';
-            break;
-        case '*':
-            this.#operation = '*';
-            break;
-        case '/':
-            this.#operation = '/';
-            break;
-        default:
-            console.log('invalid operation');
-            return ('error');
-        }
+        setOperation: (operation)=>{
 
-    }
-
-    getResult(){
-        if(this.#operand1 && this.#operand2 && this.#operation){
-            let result;
-            switch (this.#operation){
+            switch (operation){
                 case '+':
-                    result = this.#operand1 + this.#operand2;
-                    console.log(result);
-                    this.clearCalculator();
-                    return(result);
-                case '-':
-                    result = this.#operand1 - this.#operand2;
-                    console.log(result);
-                    this.clearCalculator();
-                    return(result);
-                case '*':
-                    result = this.#operand1 * this.#operand2;
-                    console.log(result);
-                    this.clearCalculator();
-                    return(result);
-                case '/':
-                    result = this.#operand1 / this.#operand2;
-                    console.log(result);
-                    this.clearCalculator();
-                    return(result);
-                default:
-                    console.log('wtf');
-                    return ('error');
+                chosenOperation = '+';
+                break;
+            case '-':
+                chosenOperation = '-';
+                break;
+            case '*':
+                chosenOperation = '*';
+                break;
+            case '/':
+                chosenOperation = '/';
+                break;
+            default:
+                console.log('invalid operation');
+                return ('error');
+            }
+    
+        },
+
+        getResult: ()=>{
+            if(operand1 && operand2 && chosenOperation){
+                let result;
+                switch (chosenOperation){
+                    case '+':
+                        result = operand1 + operand2;
+                        console.log(result);
+                        clearCalculator();
+                        return(result);
+                    case '-':
+                        result = operand1 - operand2;
+                        console.log(result);
+                        clearCalculator();
+                        return(result);
+                    case '*':
+                        result = operand1 * operand2;
+                        console.log(result);
+                        clearCalculator();
+                        return(result);
+                    case '/':
+                        result = operand1 / operand2;
+                        console.log(result);
+                        clearCalculator();
+                        return(result);
+                    default:
+                        console.log('wtf');
+                        return ('error');
+                }
+                
+            }else{
+                console.log('one or more fields are not set');
             }
             
-        }else{
-            console.log('one or more fields are not set');
-        }
-        
-        
-    }
+            
+        },
 
-    clearCalculator(){
-        this.#operand1 = undefined;
-        this.#operand2 = undefined;
-        this.#operation = undefined;
-    }
+        clearCalculator: clearCalculator()
+        
+    })
+
 }
 
 export{Calculator}

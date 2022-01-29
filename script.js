@@ -12,7 +12,7 @@ let operator = '';
 
 let result = 0;
 
-let calculator = new Calculator;
+let calculator = Calculator();
 
 // set the value for the current operator (operatorA = values[0] / operatorB = values[1])
 function readButtonValue(event){
@@ -55,8 +55,8 @@ function getOperation(event){
             if(values[0] !== ''){
                 operator = event.target.value;
                 calculatorDisplay.innerText = operator;
-                calculator.setOperand1 = values[0]
-                calculator.setOperation = operator;
+                calculator.setOperand1(values[0]);
+                calculator.setOperation(operator);
             }
         }
 
@@ -78,7 +78,7 @@ function getOperation(event){
         if(event.target.id === 'equalsButton'){
 
             if(values[0] !== '' && values[1] !== ''){
-                calculator.setOperand2 = values[1]
+                calculator.setOperand2(values[1]);
                 result = calculator.getResult();
                 console.log(result);
                 calculatorDisplay.innerText = result;
